@@ -25,7 +25,7 @@ SECRET_KEY = '64+mj*-b2omrdgiz)&55@j+c^r^@o+7@t9oxty18i^7gnp&-&g'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'backend.topper.api'
 ]
 
 MIDDLEWARE = [
@@ -75,7 +76,12 @@ WSGI_APPLICATION = 'topper.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2'
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'pass',
+        'HOST': 'postgres',
+        'PORT': '5432',
     }
 }
 

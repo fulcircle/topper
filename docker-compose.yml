@@ -15,9 +15,9 @@ services:
     env_file: .env
     command: >
       bash -c '
-      python manage.py makemigrations &&
-      python manage.py migrate &&
-      gunicorn project.wsgi -b 0.0.0.0:8000'
+      python topper/manage.py makemigrations &&
+      python topper/manage.py migrate
+      python topper/manage.py runserver'
   postgres:
     container_name: postgres
     image: postgres:latest
