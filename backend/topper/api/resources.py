@@ -7,3 +7,5 @@ class ServiceResource(ModelResource):
     class Meta:
         queryset = Service.objects.all()
         resource_name = 'service'
+
+

@@ -15,11 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from tastypie.api import Api
 from api.resources import ServiceResource
+from api import views
 
-api_resource = ServiceResource()
+topper_api = Api(api_name='topper')
+topper_api.register(ServiceResource())
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(api_resource.urls))
+    path('api/', include(topper_api.urls)),
+    path('update/', views.update),
 ]

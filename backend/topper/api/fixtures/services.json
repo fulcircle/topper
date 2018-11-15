@@ -1,0 +1,18 @@
+[
+  {
+    "model": "api.Service",
+    "pk": 1,
+    "fields": {
+      "name": "Hacker News",
+      "url": "https://news.ycombinator.com/"
+    }
+  },
+  {
+    "model": "api.Service",
+    "pk": 2,
+    "fields": {
+      "name": "Reddit",
+      "url": "https://www.reddit.com/"
+    }
+  }
+]
