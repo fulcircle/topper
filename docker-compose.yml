@@ -3,21 +3,18 @@ services:
   backend:
     container_name: backend
     build:
-      context: ./backend
+      context: ./backend/topper
       dockerfile: Dockerfile
     hostname: backend
     ports:
       - 8000:8000
     volumes:
-      - ./backend:/srv/project
+      - ./backend/topper:/srv/project
     depends_on:
       - postgres
     env_file: .env
-    command: >
-      bash -c '
-      python topper/manage.py makemigrations &&
-      python topper/manage.py migrate
-      python topper/manage.py runserver'
+    stdin_open: true
+    tty: true
   postgres:
     container_name: postgres
     image: postgres:latest
@@ -33,11 +30,11 @@ services:
   celery:
     container_name: celery
     build:
-      context: ./backend
+      context: ./backend/topper
     env_file: .env
-    command: celery -A topper worker -l info
+    command: celery -A topper beat -l info
     volumes:
-      - ./backend:/srv/project
+      - ./backend/topper:/srv/project
     depends_on:
       - backend
       - redis

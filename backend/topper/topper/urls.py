@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from backend.topper.api.resources import ServiceResource
+from api.resources import ServiceResource
 
 api_resource = ServiceResource()
 

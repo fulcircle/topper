@@ -14,7 +14,7 @@ class Service(models.Model):
     )
 
     name = models.CharField(max_length=255)
-    endpoint = models.URLField()
+    url = models.URLField()
     last_run = models.DateTimeField(null=True, blank=True)
     status = models.CharField(max_length=1, default=GOOD, choices=CURRENT_STATUS)
 
@@ -29,7 +29,7 @@ class Service(models.Model):
     def to_dict(self):
         return {
             'name': self.name,
-            'endpoint': self.endpoint,
+            'url': self.url,
             'status': self.status
         }
 
