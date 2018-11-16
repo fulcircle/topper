@@ -77,3 +77,13 @@ class Story(models.Model):
             'description': self.description
         }
 
+
+class SubredditStory(Story):
+
+    subreddit = models.CharField(max_length=255)
+
+    def to_dict(self):
+        result = super().to_dict()
+        result['subreddit'] = self.subreddit
+        return result
+

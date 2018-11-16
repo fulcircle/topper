@@ -11,6 +11,8 @@ idna==2.7
 kombu==4.2.1
 maya==0.5.0
 pendulum==1.5.1
+praw==6.0.0
+prawcore==1.0.0
 psycopg2-binary==2.7.6.1
 python-dateutil==2.7.5
 python-mimeparse==1.6.0
@@ -22,5 +24,6 @@ requests==2.20.1
 six==1.11.0
 snaptime==0.2.4
 tzlocal==1.5.1
+update-checker==0.16
 urllib3==1.24.1
 vine==1.1.4

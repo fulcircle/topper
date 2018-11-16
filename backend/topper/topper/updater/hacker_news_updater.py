@@ -18,7 +18,7 @@ class HackerNewsUpdater(Updater):
         story_ids = resp.json()
         stories = 0
         for idx, id in enumerate(story_ids):
-            if stories > 100:
+            if stories > self.MAX_STORIES:
                 break
             resp = requests.get(f'https://hacker-news.firebaseio.com/v0/item/{id}.json')
             data = resp.json()
