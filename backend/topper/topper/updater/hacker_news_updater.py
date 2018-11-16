@@ -42,10 +42,5 @@ class HackerNewsUpdater(Updater):
             else:
                 story.url = data['url']
 
-            if created:
-                story.status = Story.NEW
-            else:
-                story.status = Story.OK
-
-            story.save()
+            self.save(story, created)
 

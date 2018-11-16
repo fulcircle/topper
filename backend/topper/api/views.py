@@ -1,9 +1,9 @@
 from django.http import HttpResponse
-from topper.updater.reddit_updater import RedditUpdater
+from topper.updater.pocketcasts_updater import PocketCastsUpdater
 
 
 # Create your views here.
 def update(request):
-    result = RedditUpdater().update()
+    result = PocketCastsUpdater().update()
     return HttpResponse("", status=200)
 

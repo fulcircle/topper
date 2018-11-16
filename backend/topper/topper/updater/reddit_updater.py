@@ -40,10 +40,4 @@ class RedditUpdater(Updater):
 
                 story.comments = data.num_comments
 
-                if created:
-                    story.status = SubredditStory.NEW
-                else:
-                    story.status = SubredditStory.OK
-
-                story.save()
-
+                self.save(story, created)

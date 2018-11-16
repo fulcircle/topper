@@ -4,3 +4,8 @@ REDDIT = {
     'password': '',
     'username': ''
 }
+
+POCKET_CASTS = {
+    'username': '',
+    'password': ''
+}

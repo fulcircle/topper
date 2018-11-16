@@ -87,3 +87,15 @@ class SubredditStory(Story):
         result['subreddit'] = self.subreddit
         return result
 
+
+class Podcast(Story):
+
+    duration = models.IntegerField(default=0)
+    podcastId = models.CharField(max_length=200)
+
+    def to_dict(self):
+        result = super().to_dict()
+        result['duration'] = self.duration
+        result['podcastId'] = self.podcastId
+        return result
+

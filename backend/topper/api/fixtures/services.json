@@ -14,5 +14,13 @@
       "name": "Reddit",
       "url": "https://www.reddit.com/"
     }
+  },
+  {
+    "model": "api.Service",
+    "pk": 3,
+    "fields": {
+      "name": "Pocketcasts",
+      "url": "https://www.pocketcasts.com/"
+    }
   }
 ]
