@@ -1,7 +1,6 @@
 from django.db import models
 
 
-# Create your models here.
 class Service(models.Model):
     GOOD = 'G'
     ERROR = 'E'
@@ -67,35 +66,14 @@ class Story(models.Model):
     def __unicode__(self):
         return self.code
 
-    def to_dict(self):
-        return {
-            'code': self.code,
-            'title': self.title,
-            'url': self.url,
-            'comments': self.comments,
-            'score': self.score,
-            'description': self.description
-        }
-
 
 class SubredditStory(Story):
 
     subreddit = models.CharField(max_length=255)
-
-    def to_dict(self):
-        result = super().to_dict()
-        result['subreddit'] = self.subreddit
-        return result
 
 
 class Podcast(Story):
 
     duration = models.IntegerField(default=0)
     podcastId = models.CharField(max_length=200)
-
-    def to_dict(self):
-        result = super().to_dict()
-        result['duration'] = self.duration
-        result['podcastId'] = self.podcastId
-        return result
 

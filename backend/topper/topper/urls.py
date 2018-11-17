@@ -16,14 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from tastypie.api import Api
-from api.resources import ServiceResource
+from api.resources import ServiceResource, StoryResource
 from api import views
 
 topper_api = Api(api_name='topper')
 topper_api.register(ServiceResource())
+topper_api.register(StoryResource())
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(topper_api.urls)),
-    path('update/', views.update),
+    path('update/', views.update)
 ]
