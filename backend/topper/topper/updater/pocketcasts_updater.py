@@ -59,6 +59,7 @@ class PocketCastsUpdater(Updater):
             podcast.description = episode['title']
             podcast.duration = episode['duration']
             podcast.story_date = episode['published']
+            podcast.podcastId = episode['podcastUuid']
             podcast.url = self._get_share_url(episode['podcastUuid'], episode['uuid'])
 
             self.save(podcast, created)

@@ -25,13 +25,6 @@ class Service(models.Model):
     def __unicode__(self):
         return self.name
 
-    def to_dict(self):
-        return {
-            'name': self.name,
-            'url': self.url,
-            'status': self.status
-        }
-
 
 class Story(models.Model):
     NEW = 'N'
