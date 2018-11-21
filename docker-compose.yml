@@ -1,20 +1,5 @@
 version: "3"
 services:
-  backend:
-    container_name: backend
-    build:
-      context: ./backend/topper
-      dockerfile: Dockerfile
-    hostname: backend
-    ports:
-      - 8000:8000
-    volumes:
-      - ./backend/topper:/srv/project
-    depends_on:
-      - postgres
-    env_file: .env
-    stdin_open: true
-    tty: true
   postgres:
     container_name: postgres
     image: postgres:latest
@@ -34,7 +19,37 @@ services:
     env_file: .env
     command: celery -A topper beat -l info
     volumes:
-      - ./backend/topper:/srv/project
+      - ./backend/topper:/backend/topper
     depends_on:
       - backend
       - redis
+  frontend:
+    container_name: frontend
+    build:
+      context: ./frontend/topper
+      dockerfile: Dockerfile
+    hostname: frontend
+    ports:
+      - 3000:3000
+    volumes:
+      - ./frontend/topper:/frontend/topper
+    stdin_open: true
+    tty: true
+  backend:
+    container_name: backend
+    build:
+      context: ./backend/topper
+      dockerfile: Dockerfile
+    hostname: backend
+    ports:
+      - 8000:8000
+    volumes:
+      - ./backend/topper:/backend/topper
+      - /backend/topper/node_modules
+    depends_on:
+      - postgres
+    environment:
+      WAIT_HOSTS: postgres:5432
+    env_file: .env
+    stdin_open: true
+    tty: true
