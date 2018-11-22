@@ -6,6 +6,7 @@ import maya
 
 class ServiceResource(ModelResource):
     class Meta:
+        limit = 0
         queryset = Service.objects.all()
         resource_name = 'service'
         list_allowed_methods = ['get']
@@ -18,6 +19,7 @@ class SubredditStoryResource(ModelResource):
     service = fields.ForeignKey(ServiceResource, 'service', full=True)
 
     class Meta:
+        limit = 0
         list_allowed_methods = ['get']
         detail_allowed_methods = ['get']
         queryset = SubredditStory.objects.all()
@@ -29,6 +31,7 @@ class PodcastResource(ModelResource):
     service = fields.ForeignKey(ServiceResource, 'service', full=True)
 
     class Meta:
+        limit = 0
         list_allowed_methods = ['get']
         detail_allowed_methods = ['get']
         queryset = Podcast.objects.all()
@@ -40,6 +43,7 @@ class StoryResource(ModelResource):
     service = fields.ForeignKey(ServiceResource, 'service', full=True)
 
     class Meta:
+        limit = 0
         list_allowed_methods = ['get']
         detail_allowed_methods = ['get']
         queryset = Story.objects.all()

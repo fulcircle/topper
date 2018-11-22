@@ -21,7 +21,6 @@ services:
     volumes:
       - ./backend/topper:/backend/topper
     depends_on:
-      - backend
       - redis
   frontend:
     container_name: frontend
@@ -48,6 +47,7 @@ services:
       - /backend/topper/node_modules
     depends_on:
       - postgres
+      - celery
     environment:
       WAIT_HOSTS: postgres:5432
     env_file: .env
