@@ -15,11 +15,22 @@ class ListItem extends Component<Props> {
         let service_file = "/images/" + this.props.story.service.name.toLowerCase().replace(" ", "_") + ".jpg";
         return (
             <div className="ListItem">
-                <div className="Category">
-                    <img src={service_file} height="100%"/>
+                <div className="Headline">
+                    <div className="Service">
+                        <img src={service_file} height="100%"/>
+                    </div>
+                    <div className="Title">
+                        {this.props.story.title}
+                    </div>
                 </div>
-                <div className="Info">
-                    {this.props.story.title}
+                <div className="Details">
+                    {this.props.story.hasOwnProperty('subreddit') &&
+                    <div className="Category">
+                        from /r/{this.props.story.subreddit}
+                    </div>}
+                    <div className="Comments">
+                        {this.props.story.comments + " comments"}
+                    </div>
                 </div>
             </div>
         );
