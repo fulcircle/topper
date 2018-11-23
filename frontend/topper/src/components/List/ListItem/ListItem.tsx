@@ -12,9 +12,15 @@ class ListItem extends Component<Props> {
     }
 
     render() {
+        let service_file = "/images/" + this.props.story.service.name.toLowerCase().replace(" ", "_") + ".jpg";
         return (
             <div className="ListItem">
-                {this.props.story.title}
+                <div className="Category">
+                    <img src={service_file} height="100%"/>
+                </div>
+                <div className="Info">
+                    {this.props.story.title}
+                </div>
             </div>
         );
     }

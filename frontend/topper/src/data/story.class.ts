@@ -1,6 +1,8 @@
+import {Service} from "./service.class";
+
 export interface Story {
     id: number;
-    service: string;
+    service: Service;
     title: string;
     url: string;
     content: string;
