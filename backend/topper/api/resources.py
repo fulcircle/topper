@@ -1,6 +1,6 @@
 from tastypie import fields
 from tastypie.resources import ModelResource
-from api.models import Service, Story, SubredditStory, Podcast
+from api.models import Service, Story, Podcast
 import maya
 
 
@@ -12,18 +12,6 @@ class ServiceResource(ModelResource):
         list_allowed_methods = ['get']
         detail_allowed_methods = ['get']
         excludes = ['last_run']
-
-
-class SubredditStoryResource(ModelResource):
-
-    service = fields.ForeignKey(ServiceResource, 'service', full=True)
-
-    class Meta:
-        limit = 0
-        list_allowed_methods = ['get']
-        detail_allowed_methods = ['get']
-        queryset = SubredditStory.objects.all()
-        resource_name = 'subreddit_story'
 
 
 class PodcastResource(ModelResource):
@@ -55,11 +43,7 @@ class StoryResource(ModelResource):
 
     def dehydrate(self, bundle):
         # bundle.data['custom_field'] = "Whatever you want"
-        if hasattr(bundle.obj, 'subredditstory'):
-            subredditstory_res = SubredditStoryResource()
-            subredditstory_bundle = subredditstory_res.build_bundle(obj=bundle.obj.subredditstory, request=bundle.request)
-            bundle.data = subredditstory_res.full_dehydrate(subredditstory_bundle).data
-        elif hasattr(bundle.obj, 'podcast'):
+        if hasattr(bundle.obj, 'podcast'):
             podcast_res = PodcastResource()
             podcast_bundle = podcast_res.build_bundle(obj=bundle.obj.podcast, request=bundle.request)
             bundle.data = podcast_res.full_dehydrate(podcast_bundle).data

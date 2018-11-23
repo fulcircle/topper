@@ -2,6 +2,7 @@ import requests
 from api.models import Podcast
 from topper.keys import POCKET_CASTS
 from topper.updater.updater import Updater
+from django.db import transaction
 
 
 class PocketCastsUpdater(Updater):
@@ -45,6 +46,7 @@ class PocketCastsUpdater(Updater):
         resp = self._make_req('https://api.pocketcasts.com/podcasts/share_link', 'JSON', data={'episode': id, 'podcast': podcastId})
         return resp.json()['url']
 
+    @transaction.atomic
     def update(self):
         attempt = self._make_req('https://api.pocketcasts.com/user/new_releases', method='POST')
 
@@ -56,7 +58,7 @@ class PocketCastsUpdater(Updater):
             podcasts += 1
             podcast, created = Podcast.objects.get_or_create(service=self.service, code=episode['uuid'])
             podcast.title = episode['title']
-            podcast.description = episode['podcastTitle']
+            podcast.category = episode['podcastTitle']
             podcast.duration = episode['duration']
             podcast.story_date = episode['published']
             podcast.podcastId = episode['podcastUuid']

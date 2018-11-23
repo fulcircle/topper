@@ -3,6 +3,7 @@ import datetime
 import pytz
 from api.models import Story
 from topper.updater.updater import Updater
+from django.db import transaction
 
 
 class HackerNewsUpdater(Updater):
@@ -12,6 +13,7 @@ class HackerNewsUpdater(Updater):
     def __init__(self):
         super().__init__('Hacker News')
 
+    @transaction.atomic
     def update(self):
         endpoint = 'https://hacker-news.firebaseio.com/v0/topstories.json'
         resp = requests.get(endpoint)

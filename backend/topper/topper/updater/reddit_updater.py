@@ -1,9 +1,11 @@
 import datetime
 import pytz
 import praw
+
+from api.models import Story
 from topper.keys import REDDIT
-from api.models import SubredditStory
 from topper.updater.updater import Updater
+from django.db import transaction
 
 
 class RedditUpdater(Updater):
@@ -18,6 +20,7 @@ class RedditUpdater(Updater):
                                   user_agent='topper by /u/evilturnip',
                                   username=REDDIT['username'])
 
+    @transaction.atomic
     def update(self):
         for subreddit in self.reddit.user.subreddits():
             stories = 0
@@ -26,9 +29,9 @@ class RedditUpdater(Updater):
                     break
 
                 stories += 1
-                story, created = SubredditStory.objects.get_or_create(service=self.service,
+                story, created = Story.objects.get_or_create(service=self.service,
                                                                       code=data.id,
-                                                                      subreddit=subreddit)
+                                                                      category=subreddit)
 
                 story.title = data.title
 

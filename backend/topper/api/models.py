@@ -41,7 +41,7 @@ class Story(models.Model):
     title = models.CharField(max_length=500, null=True, blank=True)
     url = models.URLField(max_length=2000, null=True, blank=True)
     content = models.TextField(null=True, blank=True)
-    comments = models.IntegerField(default=0)
+    comments = models.IntegerField(null=True, blank=True)
     comments_url = models.URLField(max_length=2000, null=True, blank=True)
     score = models.IntegerField(default=0)
     date = models.DateField(auto_now_add=True, db_index=True)
@@ -49,6 +49,7 @@ class Story(models.Model):
     status = models.CharField(max_length=1, default=NEW, choices=STATUS)
     top_ten = models.BooleanField(default=False)
     description = models.CharField(max_length=2000, null=True, blank=True)
+    category = models.CharField(max_length=255, null=True, blank=True)
 
     class Meta:
         verbose_name = 'story'
@@ -58,11 +59,6 @@ class Story(models.Model):
 
     def __unicode__(self):
         return self.code
-
-
-class SubredditStory(Story):
-
-    subreddit = models.CharField(max_length=255)
 
 
 class Podcast(Story):
