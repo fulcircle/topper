@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './List.scss';
-import {Story} from "../../data/story.class";
+import {Story} from "../../data/story.interface";
 import ListItem from "./ListItem/ListItem";
 
 interface Props {

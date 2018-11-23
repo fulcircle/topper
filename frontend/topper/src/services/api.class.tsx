@@ -1,4 +1,4 @@
-import {Story} from "../data/story.class";
+import {Story} from "../data/story.interface";
 
 export class Api {
 

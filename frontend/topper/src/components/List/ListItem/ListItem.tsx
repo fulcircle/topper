@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './ListItem.scss';
-import {Story} from "../../../data/story.class";
+import {Story} from "../../../data/story.interface";
+import moment from 'moment';
 
 interface Props {
     story: Story;
@@ -13,6 +14,7 @@ class ListItem extends Component<Props> {
 
     render() {
         let service_file = "/images/" + this.props.story.service.name.toLowerCase().replace(" ", "_") + ".jpg";
+        let human_date = moment.utc(this.props.story.story_date).fromNow();
         return (
             <div className="ListItem">
                 <div className="Headline">
@@ -34,6 +36,9 @@ class ListItem extends Component<Props> {
                     {this.props.story.comments !== null && <div className="Comments">
                         {this.props.story.comments + " comments"}
                     </div>}
+                    <div className="Date">
+                        {human_date}
+                    </div>
                 </div>
             </div>
         );

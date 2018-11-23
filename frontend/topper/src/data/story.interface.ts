@@ -1,4 +1,4 @@
-import {Service} from "./service.class";
+import {Service} from "./service.interface";
 
 export interface Story {
     id: number;

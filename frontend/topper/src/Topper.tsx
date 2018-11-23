@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './Topper.scss';
 import List from "./components/List/List";
-import {Story} from "./data/story.class";
+import {Story} from "./data/story.interface";
 import {Api} from "./services/api.class";
 
 interface State {
