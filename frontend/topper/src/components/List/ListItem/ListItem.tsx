@@ -24,13 +24,17 @@ class ListItem extends Component<Props> {
                     </div>
                 </div>
                 <div className="Details">
-                    {this.props.story.hasOwnProperty('subreddit') &&
+                    {this.props.story.service.name === "Reddit" &&
                     <div className="Category">
                         from /r/{this.props.story.subreddit}
                     </div>}
-                    <div className="Comments">
+                    {this.props.story.service.name === "Pocketcasts" &&
+                    <div className="Category">
+                        from {this.props.story.description}
+                    </div>}
+                    {this.props.story.service.name !== "Pocketcasts" && <div className="Comments">
                         {this.props.story.comments + " comments"}
-                    </div>
+                    </div>}
                 </div>
             </div>
         );

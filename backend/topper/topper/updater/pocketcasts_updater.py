@@ -55,8 +55,8 @@ class PocketCastsUpdater(Updater):
 
             podcasts += 1
             podcast, created = Podcast.objects.get_or_create(service=self.service, code=episode['uuid'])
-            podcast.title = episode['podcastTitle']
-            podcast.description = episode['title']
+            podcast.title = episode['title']
+            podcast.description = episode['podcastTitle']
             podcast.duration = episode['duration']
             podcast.story_date = episode['published']
             podcast.podcastId = episode['podcastUuid']
