@@ -15,8 +15,7 @@ export interface Story {
     top_ten: boolean;
     description: string;
 
-    // Reddit
-    subreddit: string;
+    category: string;
 
     // Podcast
     podcastId: string;

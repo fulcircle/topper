@@ -24,15 +24,14 @@ class ListItem extends Component<Props> {
                     </div>
                 </div>
                 <div className="Details">
-                    {this.props.story.service.name === "Reddit" &&
+                    {this.props.story.category !== null &&
                     <div className="Category">
-                        from /r/{this.props.story.subreddit}
+                        from&nbsp;
+                        {this.props.story.service.name == "Reddit" &&
+                        <span>/r/</span>}
+                        {this.props.story.category}
                     </div>}
-                    {this.props.story.service.name === "Pocketcasts" &&
-                    <div className="Category">
-                        from {this.props.story.description}
-                    </div>}
-                    {this.props.story.service.name !== "Pocketcasts" && <div className="Comments">
+                    {this.props.story.comments !== null && <div className="Comments">
                         {this.props.story.comments + " comments"}
                     </div>}
                 </div>
