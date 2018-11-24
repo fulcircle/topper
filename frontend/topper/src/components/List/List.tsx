@@ -5,9 +5,11 @@ import {Story} from "../../data/story.interface";
 
 interface Props {
     stories: any;
+    filter: string;
 }
 
 class List extends Component<Props> {
+
     constructor(props: Props) {
         super(props);
     }
@@ -41,15 +43,34 @@ class List extends Component<Props> {
 
     }
 
-    render() {
-        let stories: React.ReactNode[] = [];
-        let topStories = this.topStories();
+    storiesByService(service: string) {
+        let stories: Story[] = [];
+        if (this.props.stories.hasOwnProperty(service)) {
+            Object.keys(this.props.stories[service]).forEach((category: string) => {
+                this.props.stories[service][category].forEach((story: Story) => {
+                    stories.push(story)
+                })
+            });
+        }
 
-        topStories.forEach((s: Story) => stories.push(<ListItem key={s.id} story={s}/>));
+        return stories;
+    }
+
+    render() {
+        let nodes: React.ReactNode[] = [];
+        let stories: Story[] = [];
+
+        if (this.props.filter === 'topStories') {
+            stories = this.topStories();
+        } else {
+            stories = this.storiesByService(this.props.filter);
+        }
+
+        stories.forEach((s: Story) => nodes.push(<ListItem key={s.id} story={s}/>));
 
         return (
             <div className="List">
-                {stories}
+                {nodes}
             </div>
         );
     }

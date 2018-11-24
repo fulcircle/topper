@@ -55,7 +55,7 @@ class Story(models.Model):
         verbose_name = 'story'
         verbose_name_plural = 'stories'
         unique_together = (('service', 'code', 'date'),)
-        ordering = ('-score', 'date')
+        ordering = ('-score', '-story_date')
 
     def __unicode__(self):
         return self.code

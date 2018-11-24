@@ -19,5 +19,5 @@ export interface Story {
 
     // Podcast
     podcastId: string;
-    duration: string;
+    duration: number;
 }

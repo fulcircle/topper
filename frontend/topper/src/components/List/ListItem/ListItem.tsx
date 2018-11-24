@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './ListItem.scss';
 import {Story} from "../../../data/story.interface";
 import moment from 'moment';
+import camelCase from "camelcase";
+import {Link} from "react-router-dom";
 
 interface Props {
     story: Story;
@@ -19,7 +21,7 @@ class ListItem extends Component<Props> {
             <div className="ListItem">
                 <div className="Headline">
                     <div className="Service">
-                        <img src={service_file} height="100%"/>
+                        <Link to={'/' + camelCase(this.props.story.service.name)}><img src={service_file} height="100%"/></Link>
                     </div>
                     <div className="Title">
                         <a target="_blank" href={this.props.story.url}>{this.props.story.title}</a>
@@ -29,7 +31,7 @@ class ListItem extends Component<Props> {
                     {this.props.story.category !== 'default' &&
                     <div className="Category">
                         from&nbsp;
-                        {this.props.story.service.name == "Reddit" &&
+                        {this.props.story.service.name === "Reddit" &&
                         <span>/r/</span>}
                         {this.props.story.category}
                     </div>}

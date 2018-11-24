@@ -38,8 +38,12 @@ class StoryResource(ModelResource):
         resource_name = 'story'
 
     def get_object_list(self, request):
-        hours_ago_24 = maya.now().subtract(hours=48).datetime()
-        return super(StoryResource, self).get_object_list(request).filter(story_date__gte=hours_ago_24)
+        hours_ago_24 = maya.now().subtract(hours=24).datetime()
+        week_ago = maya.now().subtract(days=7).datetime()
+        stories = super(StoryResource, self).get_object_list(request).filter(story_date__gte=hours_ago_24)
+        podcastService = Service.objects.get(name="Pocketcasts")
+        podcasts = super(StoryResource, self).get_object_list(request).filter(service=podcastService, story_date__gte=week_ago)
+        return stories | podcasts
 
     def dehydrate(self, bundle):
         # bundle.data['custom_field'] = "Whatever you want"
