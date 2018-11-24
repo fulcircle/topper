@@ -49,7 +49,7 @@ class Story(models.Model):
     status = models.CharField(max_length=1, default=NEW, choices=STATUS)
     top_ten = models.BooleanField(default=False)
     description = models.CharField(max_length=2000, null=True, blank=True)
-    category = models.CharField(max_length=255, null=True, blank=True)
+    category = models.CharField(max_length=255, default='default', blank=True)
 
     class Meta:
         verbose_name = 'story'

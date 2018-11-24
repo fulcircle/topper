@@ -4,6 +4,7 @@ import pytz
 from api.models import Story
 from topper.updater.updater import Updater
 from django.db import transaction
+import urllib.parse
 
 
 class HackerNewsUpdater(Updater):
@@ -33,7 +34,7 @@ class HackerNewsUpdater(Updater):
 
             story.title = data['title']
             story.comments = data['descendants']
-            story.comments_url = f"{self.service.url}/item?id={id}"
+            story.comments_url = urllib.parse.urljoin(self.service.url, f"item?id={id}")
 
             story.story_date = datetime.datetime.utcfromtimestamp(data['time']).replace(tzinfo=pytz.UTC)
 

@@ -6,6 +6,7 @@ from api.models import Story
 from topper.keys import REDDIT
 from topper.updater.updater import Updater
 from django.db import transaction
+import urllib.parse
 
 
 class RedditUpdater(Updater):
@@ -40,6 +41,7 @@ class RedditUpdater(Updater):
                 story.score = data.score
 
                 story.url = data.url
+                story.comments_url = urllib.parse.urljoin(self.service.url,  data.permalink)
 
                 story.comments = data.num_comments
 

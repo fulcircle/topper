@@ -22,11 +22,11 @@ class ListItem extends Component<Props> {
                         <img src={service_file} height="100%"/>
                     </div>
                     <div className="Title">
-                        {this.props.story.title}
+                        <a target="_blank" href={this.props.story.url}>{this.props.story.title}</a>
                     </div>
                 </div>
                 <div className="Details">
-                    {this.props.story.category !== null &&
+                    {this.props.story.category !== 'default' &&
                     <div className="Category">
                         from&nbsp;
                         {this.props.story.service.name == "Reddit" &&
@@ -34,7 +34,7 @@ class ListItem extends Component<Props> {
                         {this.props.story.category}
                     </div>}
                     {this.props.story.comments !== null && <div className="Comments">
-                        {this.props.story.comments + " comments"}
+                        <a target="_blank" href={this.props.story.comments_url}>{this.props.story.comments + " comments"}</a>
                     </div>}
                     <div className="Date">
                         {human_date}

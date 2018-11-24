@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import './List.scss';
-import {Story} from "../../data/story.interface";
 import ListItem from "./ListItem/ListItem";
+import {Story} from "../../data/story.interface";
 
 interface Props {
-    stories: Story[];
+    stories: any;
 }
 
 class List extends Component<Props> {
@@ -12,10 +12,40 @@ class List extends Component<Props> {
         super(props);
     }
 
+    topStories(): Story[] {
+
+        let stories: Story[] = [];
+        for (let i = 0; i < 3; i++) {
+            Object.keys(this.props.stories).forEach(service => {
+                Object.keys(this.props.stories[service]).forEach(category => {
+
+                    let matches: Story[] =
+                        this.props.stories[service][category].filter((s: Story) => stories.indexOf(s) == -1);
+
+                    if (matches.length > 0) {
+                        if (category === 'default') {
+                            for (let i = 0; i < 3; i++) {
+                                if (i < matches.length) {
+                                    stories.push(matches[i])
+                                }
+                            }
+                        } else {
+                            stories.push(matches[0]);
+                        }
+                    }
+                })
+            });
+        }
+
+        return stories;
+
+    }
+
     render() {
-        const stories: React.ReactNode[] = this.props.stories.map((story) => {
-            return <ListItem key={story.id} story={story}/>
-        });
+        let stories: React.ReactNode[] = [];
+        let topStories = this.topStories();
+
+        topStories.forEach((s: Story) => stories.push(<ListItem key={s.id} story={s}/>));
 
         return (
             <div className="List">

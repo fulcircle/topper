@@ -13,7 +13,7 @@ img {
   display: flex;
   flex-direction: row;
   align-items: center;
-  font-size: 22px;
+  font-size: 20px;
   color: $title;
   line-height: 30px;
   font-weight: 300;
@@ -43,6 +43,7 @@ img {
   flex-direction: row;
   margin-top: 5px;
   margin-left: 50px;
+  font-size: 13px;
 }
 
 .Category, .Comments, .Date {
