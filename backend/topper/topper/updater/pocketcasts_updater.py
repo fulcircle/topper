@@ -1,5 +1,5 @@
 import requests
-from api.models import Podcast
+from topper.models import Podcast
 from topper.keys import POCKET_CASTS
 from topper.updater.updater import Updater
 from django.db import transaction

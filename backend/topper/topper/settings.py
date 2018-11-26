@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'api'
+    'api',
+    'topper'
 ]
 
 MIDDLEWARE = [
@@ -132,8 +133,8 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 
 CELERY_BEAT_SCHEDULE = {
-    'hello': {
-        'task': 'topper.tasks.hello',
-        'schedule': crontab()  # execute every minute
+    'update_stories': {
+        'task': 'topper.tasks.update_stories',
+        'schedule': crontab(minute=0)  # execute every hour
     }
 }

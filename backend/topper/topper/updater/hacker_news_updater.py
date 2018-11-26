@@ -1,7 +1,7 @@
 import requests
 import datetime
 import pytz
-from api.models import Story
+from topper.models import Story
 from topper.updater.updater import Updater
 from django.db import transaction
 import urllib.parse

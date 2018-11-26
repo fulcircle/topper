@@ -1,6 +1,6 @@
 from tastypie import fields
 from tastypie.resources import ModelResource
-from api.models import Service, Story, Podcast
+from topper.models import Service, Story, Podcast
 import maya
 
 

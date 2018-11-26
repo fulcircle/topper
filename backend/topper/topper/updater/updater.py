@@ -1,5 +1,5 @@
 from abc import abstractmethod
-from api.models import Service, Story
+from topper.models import Service, Story
 
 
 class Updater:

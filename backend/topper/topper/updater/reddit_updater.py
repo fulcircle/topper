@@ -2,7 +2,7 @@ import datetime
 import pytz
 import praw
 
-from api.models import Story
+from topper.models import Story
 from topper.keys import REDDIT
 from topper.updater.updater import Updater
 from django.db import transaction

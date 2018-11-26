@@ -17,7 +17,7 @@ services:
     build:
       context: ./backend/topper
     env_file: .env
-    command: celery -A topper beat -l info
+    command: celery worker -A topper --beat -l debug
     volumes:
       - ./backend/topper:/backend/topper
     depends_on:

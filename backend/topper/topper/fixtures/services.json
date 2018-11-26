@@ -1,6 +1,6 @@
 [
   {
-    "model": "api.Service",
+    "model": "topper.Service",
     "pk": 1,
     "fields": {
       "name": "Hacker News",
@@ -8,7 +8,7 @@
     }
   },
   {
-    "model": "api.Service",
+    "model": "topper.Service",
     "pk": 2,
     "fields": {
       "name": "Reddit",
@@ -16,7 +16,7 @@
     }
   },
   {
-    "model": "api.Service",
+    "model": "topper.Service",
     "pk": 3,
     "fields": {
       "name": "Pocketcasts",
