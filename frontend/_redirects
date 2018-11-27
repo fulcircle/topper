@@ -1,2 +1,2 @@
-/api/*  http://topper-prod.us-east-1.elasticbeanstalk.com/:splat  200
-/admin/*  http://topper-prod.us-east-1.elasticbeanstalk.com/:splat  200
+/api/*  https://backend.topper.fulcircle.io/:splat  200
+/admin/*  https://backend.topper.fulcircle.io/:splat  200
