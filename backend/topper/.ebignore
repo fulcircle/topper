@@ -1,0 +1,9 @@
+*.pyo
+*.pyc
+celerybeat.pid
+celerybeat-schedule
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
