@@ -15,7 +15,7 @@ class ListItem extends Component<Props> {
     }
 
     render() {
-        let service_file = "/images/" + this.props.story.service.name.toLowerCase().replace(" ", "_") + ".jpg";
+        let service_file = "images/" + this.props.story.service.name.toLowerCase().replace(" ", "_") + ".jpg";
         let human_date = moment.utc(this.props.story.story_date).fromNow();
 
         let title = this.props.story.title;
@@ -27,7 +27,7 @@ class ListItem extends Component<Props> {
             <div className="ListItem">
                 <div className="Headline">
                     <div className="Service">
-                        <Link to={'/' + camelCase(this.props.story.service.name)}><img src={service_file} height="100%"/></Link>
+                        <Link to={camelCase(this.props.story.service.name)}><img src={service_file} height="100%"/></Link>
                     </div>
                     <div className="Title">
                         <a target="_blank" href={this.props.story.url}>{title}</a>
