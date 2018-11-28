@@ -3,7 +3,7 @@ import {Story} from "../data/story.interface";
 export class Api {
 
     static getStories(): Promise<Story[]> {
-        return fetch('/api/topper/story')
+        return fetch('/api/story')
             .then(response => {
                 if (!response.ok) {
                     throw new Error(response.statusText)
