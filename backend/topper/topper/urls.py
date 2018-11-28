@@ -19,13 +19,13 @@ from tastypie.api import Api
 from api.resources import ServiceResource, StoryResource, PodcastResource
 from topper import views
 
-topper_api = Api(api_name='topper')
+topper_api = Api(api_name='api')
 topper_api.register(ServiceResource())
 topper_api.register(StoryResource())
 topper_api.register(PodcastResource())
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(topper_api.urls)),
+    path('', include(topper_api.urls)),
     path('update/', views.update)
 ]

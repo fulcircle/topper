@@ -1,2 +1,2 @@
-/api/*  https://backend.topper.fulcircle.io/:splat  200
-/admin/*  https://backend.topper.fulcircle.io/:splat  200
+/api/*  https://backend.topper.fulcircle.io/api/:splat  200
+/admin/*  https://backend.topper.fulcircle.io/admin/:splat  200
