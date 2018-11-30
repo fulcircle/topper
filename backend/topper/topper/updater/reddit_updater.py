@@ -3,7 +3,7 @@ import pytz
 import praw
 
 from topper.models import Story
-from topper.keys import REDDIT
+from django.conf import settings
 from topper.updater.updater import Updater
 from django.db import transaction
 import urllib.parse
@@ -15,11 +15,11 @@ class RedditUpdater(Updater):
 
     def __init__(self):
         super().__init__('Reddit')
-        self.reddit = praw.Reddit(client_id=REDDIT['client_id'],
-                                  client_secret=REDDIT['client_secret'],
-                                  password=REDDIT['password'],
+        self.reddit = praw.Reddit(client_id=settings.REDDIT['client_id'],
+                                  client_secret=settings.REDDIT['client_secret'],
+                                  password=settings.REDDIT['password'],
                                   user_agent='topper by /u/evilturnip',
-                                  username=REDDIT['username'])
+                                  username=settings.REDDIT['username'])
 
     @transaction.atomic
     def update(self):

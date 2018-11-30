@@ -4,8 +4,9 @@ backend/venv
 *.pyc
 celerybeat.pid
 celerybeat-schedule
-keys.py
-node_modules/
+**/settings/prod.py
+**/settings/api_keys.py
+**/node_modules/
 backend/topper/static
 
 # Elastic Beanstalk Files

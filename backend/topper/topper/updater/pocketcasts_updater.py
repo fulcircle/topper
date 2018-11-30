@@ -1,6 +1,6 @@
 import requests
 from topper.models import Podcast
-from topper.keys import POCKET_CASTS
+from django.conf import settings
 from topper.updater.updater import Updater
 from django.db import transaction
 
@@ -13,8 +13,8 @@ class PocketCastsUpdater(Updater):
         super().__init__('Pocketcasts')
         self.token = None
 
-        self._username = POCKET_CASTS['username']
-        self._password = POCKET_CASTS['password']
+        self._username = settings.POCKET_CASTS['username']
+        self._password = settings.POCKET_CASTS['password']
 
         self._session = requests.Session()
         self.token = self._login()
