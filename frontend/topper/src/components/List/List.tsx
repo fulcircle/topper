@@ -57,6 +57,7 @@ class List extends Component<Props> {
     }
 
     render() {
+        let mql = window.matchMedia("only screen and (min-device-width: 320px) and (max-device-width: 768px)");
         let nodes: React.ReactNode[] = [];
         let stories: Story[] = [];
 
@@ -66,7 +67,7 @@ class List extends Component<Props> {
             stories = this.storiesByService(this.props.filter);
         }
 
-        stories.forEach((s: Story) => nodes.push(<ListItem key={s.id} story={s}/>));
+        stories.forEach((s: Story) => nodes.push(<ListItem truncate={mql.matches} key={s.id} story={s}/>));
 
         return (
             <div className="List">

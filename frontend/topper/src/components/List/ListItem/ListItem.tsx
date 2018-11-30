@@ -6,6 +6,7 @@ import camelCase from "camelcase";
 import {Link} from "react-router-dom";
 
 interface Props {
+    truncate: boolean;
     story: Story;
 }
 
@@ -14,11 +15,24 @@ class ListItem extends Component<Props> {
         super(props);
     }
 
+    truncateText(txt: string, n:number, useWordBoundary=true) {
+        if (txt.length <= n) { return txt; }
+        let subString = txt.substr(0, n-1);
+        return (useWordBoundary
+            ? subString.substr(0, subString.lastIndexOf(' '))
+            : subString) + "...";
+    }
+
+
     render() {
         let service_file = "images/" + this.props.story.service.name.toLowerCase().replace(" ", "_") + ".jpg";
         let human_date = moment.utc(this.props.story.story_date).fromNow();
 
         let title = this.props.story.title;
+        if (this.props.truncate) {
+            title = this.truncateText(title, 75);
+        }
+
         if (title === null || title === "") {
             title = "Untitled";
         }

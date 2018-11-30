@@ -45,15 +45,18 @@ class Topper extends Component<Props, State> {
     render() {
         let nodes: React.ReactNode[] = [];
 
+        let key = 0;
+
         Object.keys(this.state.stories).forEach((service: string) => {
             nodes.push(
-                <Route exact path={'/' + service}>
+                <Route key={key} exact path={'/' + service}>
                     <List stories={this.state.stories} filter={service}/>
-                </Route>)
+                </Route>);
+            key += 1;
         });
 
         nodes.push(
-            <Route>
+            <Route key={key}>
                 <List stories={this.state.stories} filter='topStories'/>
             </Route>
         );

@@ -1,4 +1,12 @@
+@import "../../base_scss/base";
+
 .List {
   width: 960px;
   margin: auto;
+
+  @include mobile() {
+    width: 85%;
+    min-width: 200px;
+  }
+
 }
