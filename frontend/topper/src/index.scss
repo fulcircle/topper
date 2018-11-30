@@ -2,6 +2,10 @@
 @import "base_scss/colors";
 @import "base_scss/fonts";
 
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
