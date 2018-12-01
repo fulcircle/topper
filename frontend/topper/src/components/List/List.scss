@@ -30,8 +30,16 @@
 
 .Filters {
   display: flex;
+
+  @include mobile() {
+    flex-direction: column;
+  }
 }
 
 .Filter {
   margin-right: 20px;
+
+  @include mobile() {
+    margin-bottom: 15px;
+  }
 }
