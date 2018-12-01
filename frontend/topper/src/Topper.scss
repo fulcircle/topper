@@ -1,3 +1,8 @@
 .Topper {
+  transition: opacity 500ms ease;
+}
+
+.spinner {
+  margin-top: calc(50vh - 30px);
 }
 

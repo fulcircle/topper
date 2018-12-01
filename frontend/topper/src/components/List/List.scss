@@ -1,4 +1,5 @@
 @import "../../base_scss/base";
+@import "ListItem/ListItem";
 
 .List {
   width: 960px;
@@ -9,4 +10,28 @@
     min-width: 200px;
   }
 
+}
+
+.ListTitlePadding {
+  @extend .Service;
+  width: 40px;
+}
+
+.ListTitle {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.ListTitleHeading {
+ @extend .ListItem;
+  padding: 70px 0;
+  font-style: italic;
+}
+
+.Filters {
+  display: flex;
+}
+
+.Filter {
+  margin-right: 20px;
 }

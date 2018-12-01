@@ -5,9 +5,13 @@ import {Story} from "./data/story.interface";
 import {Api} from "./services/api.class";
 import camelCase from 'camelcase';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
+import Spinner from "./components/Spinner/Spinner";
 
 interface State {
     stories: any;
+    services: string[];
+    loading: boolean;
 }
 
 interface Props {
@@ -18,9 +22,10 @@ class Topper extends Component<Props, State> {
 
     constructor(props: Props) {
         super(props);
-        this.state = {stories: {}};
+        this.state = {stories: {}, services: [], loading: false};
     }
     componentDidMount(): void {
+        this.setState({loading: true});
         Api.getStories().then((data: Story[]) => {
             let stories: any = {};
             data.forEach(story => {
@@ -38,37 +43,47 @@ class Topper extends Component<Props, State> {
                 stories[service][category].push(story)
 
             });
-            this.setState({stories: stories})
+            this.setState({stories: stories, services: Object.keys(stories), loading: false})
         })
     }
 
     render() {
         let nodes: React.ReactNode[] = [];
 
-        let key = 0;
-
-        Object.keys(this.state.stories).forEach((service: string) => {
+        this.state.services.forEach((service, idx) => {
             nodes.push(
-                <Route key={key} exact path={'/' + service}>
-                    <List stories={this.state.stories} filter={service}/>
+                <Route key={idx+1} exact path={'/' + service}>
+                    <List stories={this.state.stories} services={this.state.services} filter={service}/>
                 </Route>);
-            key += 1;
         });
 
         nodes.push(
-            <Route key={key}>
-                <List stories={this.state.stories} filter='topStories'/>
+            <Route key="0">
+                <List stories={this.state.stories} services={this.state.services} filter='topStories'/>
             </Route>
+        );
+
+        let spinner = this.state.loading ? (
+            <div className="spinner">
+                <Spinner/>
+            </div>
+        ) : null;
+
+        let app = (
+            <div className="Topper" style={{opacity: this.state.loading ? 0 : 1}}>
+                <Switch>
+                    {nodes}
+                </Switch>
+            </div>
         );
 
 
         return (
             <Router>
-                <div className="Topper">
-                    <Switch>
-                        {nodes}
-                    </Switch>
-                </div>
+                <ScrollToTop>
+                    {spinner}
+                    {app}
+                </ScrollToTop>
             </Router>
         );
     }

@@ -41,7 +41,7 @@ class ListItem extends Component<Props> {
             <div className="ListItem">
                 <div className="Headline">
                     <div className="Service">
-                        <Link to={camelCase(this.props.story.service.name)}><img src={service_file} height="100%"/></Link>
+                        <Link to={camelCase(this.props.story.service.name)}><img alt={this.props.story.service.name} src={service_file} height="100%"/></Link>
                     </div>
                     <div className="Title">
                         <a target="_blank" href={this.props.story.url}>{title}</a>
