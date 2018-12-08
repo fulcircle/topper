@@ -1,4 +1,4 @@
-# topper [[demo](https://topper.fulcirlce.io)]
+# topper [[demo](https://topper.fulcircle.io)]
 ### A minimal content aggregator written in Django and React
 
 ![topper screenshot](https://www.fulcircle.io/images/topper.png)
