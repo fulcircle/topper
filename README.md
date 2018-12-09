@@ -3,7 +3,7 @@
 
 ![topper screenshot](https://www.fulcircle.io/images/topper.png)
 
-### Requirements: 
+### Requirements 
 ---
 1. docker-compose
 
@@ -20,6 +20,8 @@
     docker-compose up
     ```
 
+4. Access `http://localhost:8000/update` to populate initial stories
+
 The frontend should be accessible at: `http://localhost:3000`
 
-Celery Beat is used to update stories every hour.  This will happen automatically in the docker setup.  However, if you want to manually update the sources, you can visit `http://localhost:8000/update` to force updating for initial population of database with stories.
+Celery Beat is used to update stories every hour.  This will happen automatically in the docker setup.
