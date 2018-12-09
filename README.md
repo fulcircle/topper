@@ -3,7 +3,7 @@
 
 ![topper screenshot](https://www.fulcircle.io/images/topper.png)
 
-### Requirements: 
+### Requirements 
 ---
 1. docker-compose
 
