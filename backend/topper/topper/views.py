@@ -1,14 +1,9 @@
 from django.http import HttpResponse
-from topper.updater.pocketcasts_updater import PocketCastsUpdater
-from topper.updater.reddit_updater import RedditUpdater
-from topper.updater.hacker_news_updater import HackerNewsUpdater
+from topper.updater.update import update as update_sources
 
 
 # Create your views here.
 def update(request):
-    PocketCastsUpdater().update()
-    RedditUpdater().update()
-    HackerNewsUpdater().update()
-
+    update_sources()
     return HttpResponse("", status=200)
 

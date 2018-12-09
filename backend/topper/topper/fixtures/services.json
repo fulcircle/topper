@@ -22,5 +22,13 @@
       "name": "Pocketcasts",
       "url": "https://www.pocketcasts.com"
     }
+  },
+  {
+    "model": "topper.Service",
+    "pk": 4,
+    "fields": {
+      "name": "Twitter",
+      "url": "https://www.twitter.com"
+    }
   }
 ]

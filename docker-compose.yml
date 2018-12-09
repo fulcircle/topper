@@ -32,6 +32,7 @@ services:
       - 3000:3000
     volumes:
       - ./frontend/topper:/frontend/topper
+      - /frontend/topper/node_modules/
     stdin_open: true
     tty: true
   backend:
