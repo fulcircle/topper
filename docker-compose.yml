@@ -45,7 +45,6 @@ services:
       - 8000:8000
     volumes:
       - ./backend/topper:/backend/topper
-      - /backend/topper/node_modules
     depends_on:
       - postgres
       - celery
