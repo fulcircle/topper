@@ -15,4 +15,4 @@ EXPOSE 8000
 ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.4.0/wait /wait
 RUN chmod +x /wait
 
-CMD /wait python manage.py migrate && python manage.py loaddata services && python manage.py createsu && python manage.py runserver 0.0.0.0:8000
+CMD /wait python manage.py makemigrations && python manage.py migrate && python manage.py loaddata services && python manage.py createsu && python manage.py runserver 0.0.0.0:8000
