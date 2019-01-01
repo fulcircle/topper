@@ -10,17 +10,15 @@
 
 ### Running locally
 ---
-1. Set the `proxy` option in `frontend/topper/package.json` to `http://localhost:8000`
-
-2. Fill in API key info in `backend/topper/topper/api_keys_default.py`.  If you don't have some of these services, you'll have to comment out the appropriate line in `backend/topper/topper/updater/update.py`
+1. Fill in API key info in `backend/topper/topper/api_keys_default.py`.  If you don't have some of these services, you'll have to comment out the appropriate line in `backend/topper/topper/updater/update.py`
  
-3. The entire project can be run locally with docker out of the root directory with the following commands:
+2. The entire project can be run locally ^ith docker out of the root directory with the following commands:
     ```
     docker-compose build
     docker-compose up
     ```
 
-4. Access `http://localhost:8000/update` to populate initial stories
+3. Access `http://localhost:8000/update` to populate initial stories
 
 The frontend should be accessible at: `http://localhost:3000`
 
