@@ -12,7 +12,7 @@
 ---
 1. Fill in API key info in `backend/topper/topper/api_keys_default.py`.  If you don't have some of these services, you'll have to comment out the appropriate line in `backend/topper/topper/updater/update.py`
  
-2. The entire project can be run locally ^ith docker out of the root directory with the following commands:
+2. The entire project can be run locally with docker out of the root directory with the following commands:
     ```
     docker-compose build
     docker-compose up
