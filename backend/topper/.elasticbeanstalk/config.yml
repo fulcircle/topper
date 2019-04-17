@@ -1,6 +1,6 @@
 branch-defaults:
   master:
-    environment: topper-prod
+    environment: topper
     group_suffix: null
 global:
   application_name: topper
